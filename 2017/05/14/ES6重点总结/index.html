@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="常用重点语法总结为什么使用let和const1 不存在变量提升。 12345678var 的情况// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet bar = 2; 2 防止用来计数的循环变量泄露成全局变量。 1234567var s = &amp;">
+<meta name="description" content="为什么使用let和const1、不存在变量提升。 12345678var 的情况// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet bar = 2;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6重点总结">
 <meta property="og:url" content="https://kusila.github.io/hpblog/2017/05/14/ES6重点总结/index.html">
 <meta property="og:site_name" content="Welcome to my blog">
-<meta property="og:description" content="常用重点语法总结为什么使用let和const1 不存在变量提升。 12345678var 的情况// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet bar = 2; 2 防止用来计数的循环变量泄露成全局变量。 1234567var s = &amp;">
+<meta property="og:description" content="为什么使用let和const1、不存在变量提升。 12345678var 的情况// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet bar = 2;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-15T08:13:14.634Z">
+<meta property="og:updated_time" content="2018-05-15T09:15:32.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6重点总结">
-<meta name="twitter:description" content="常用重点语法总结为什么使用let和const1 不存在变量提升。 12345678var 的情况// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet bar = 2; 2 防止用来计数的循环变量泄露成全局变量。 1234567var s = &amp;">
+<meta name="twitter:description" content="为什么使用let和const1、不存在变量提升。 12345678var 的情况// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet bar = 2;">
 
 
 
@@ -319,31 +319,37 @@
       
 
       
-        <h1 id="常用重点语法总结"><a href="#常用重点语法总结" class="headerlink" title="常用重点语法总结"></a>常用重点语法总结</h1><h2 id="为什么使用let和const"><a href="#为什么使用let和const" class="headerlink" title="为什么使用let和const"></a>为什么使用let和const</h2><p>1 不存在变量提升。</p>
+        <h1 id="为什么使用let和const"><a href="#为什么使用let和const" class="headerlink" title="为什么使用let和const"></a>为什么使用let和const</h1><p>1、不存在变量提升。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var 的情况</span><br><span class="line">// var 的情况</span><br><span class="line">console.log(foo); // 输出undefined</span><br><span class="line">var foo = 2;</span><br><span class="line"></span><br><span class="line">// let 的情况</span><br><span class="line">console.log(bar); // 报错ReferenceError</span><br><span class="line">let bar = 2;</span><br></pre></td></tr></table></figure>
-<p>2 防止用来计数的循环变量泄露成全局变量。</p>
+<a id="more"></a>
+<p>2、防止用来计数的循环变量泄露成全局变量。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var s = &apos;hello&apos;;</span><br><span class="line"></span><br><span class="line">for (var i = 0; i &lt; s.length; i++) &#123;</span><br><span class="line">  console.log(s[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(i); // 5</span><br></pre></td></tr></table></figure>
-<p>3 const保证变量指向的那个<code>内存地址</code>不得改动。</p>
+<p>3、const保证变量指向的那个<code>内存地址</code>不得改动。</p>
 <blockquote>
 <p>对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。但对于<code>复合类型的数据</code>（主要是对象和数组），变量指向的内存地址，保存的只是一个指针，const只能保证这个<code>指针是固定的</code>，至于它指向的数据结构是不是可变的，就完全不能控制了。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const foo = &#123;&#125;;</span><br><span class="line">// 为 foo 添加一个属性，可以成功</span><br><span class="line">foo.prop = 123;</span><br><span class="line">foo.prop // 123</span><br><span class="line">// 将 foo 指向另一个对象，就会报错</span><br><span class="line">foo = &#123;&#125;; // TypeError: &quot;foo&quot; is read-only</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a = [];</span><br><span class="line">a.push(&apos;Hello&apos;); // 可执行</span><br><span class="line">a.length = 0;    // 可执行</span><br><span class="line">a = [&apos;Dave&apos;];    // 报错</span><br></pre></td></tr></table></figure>
-<h2 id="解构用途"><a href="#解构用途" class="headerlink" title="解构用途"></a>解构用途</h2><p>1 交换变量的值</p>
+<hr>
+<h1 id="解构用途"><a href="#解构用途" class="headerlink" title="解构用途"></a>解构用途</h1><p>1、交换变量的值</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let x = 1;</span><br><span class="line">let y = 2;</span><br><span class="line"></span><br><span class="line">[x, y] = [y, x];</span><br></pre></td></tr></table></figure>
-<p>2 从函数返回多个值</p>
+<p>2、从函数返回多个值</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 返回一个数组</span><br><span class="line"></span><br><span class="line">function example() &#123;</span><br><span class="line">  return [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line">let [a, b, c] = example();</span><br><span class="line"></span><br><span class="line">// 返回一个对象</span><br><span class="line"></span><br><span class="line">function example() &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    foo: 1,</span><br><span class="line">    bar: 2</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">let &#123; foo, bar &#125; = example();</span><br></pre></td></tr></table></figure>
-<p>3 函数参数的定义</p>
+<p>3、函数参数的定义</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 参数是一组有次序的值</span><br><span class="line">function f([x, y, z]) &#123; ... &#125;</span><br><span class="line">f([1, 2, 3]);</span><br><span class="line"></span><br><span class="line">// 参数是一组无次序的值</span><br><span class="line">function f(&#123;x, y, z&#125;) &#123; ... &#125;</span><br><span class="line">f(&#123;z: 3, y: 2, x: 1&#125;);</span><br></pre></td></tr></table></figure>
-<p>4 提取 JSON 数据</p>
+<p>4、提取 JSON 数据</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let jsonData = &#123;</span><br><span class="line">  id: 42,</span><br><span class="line">  status: &quot;OK&quot;,</span><br><span class="line">  data: [867, 5309]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let &#123; id, status, data: number &#125; = jsonData;</span><br><span class="line"></span><br><span class="line">console.log(id, status, number);</span><br><span class="line">// 42, &quot;OK&quot;, [867, 5309]</span><br></pre></td></tr></table></figure>
-<p>5 函数参数的默认值</p>
+<p>5、函数参数的默认值</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jQuery.ajax = function (url, &#123;</span><br><span class="line">  async = true,</span><br><span class="line">  beforeSend = function () &#123;&#125;,</span><br><span class="line">  cache = true,</span><br><span class="line">  complete = function () &#123;&#125;,</span><br><span class="line">  crossDomain = false,</span><br><span class="line">  global = true,</span><br><span class="line">  // ... more config</span><br><span class="line">&#125; = &#123;&#125;) &#123;</span><br><span class="line">  // ... do stuff</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>6 遍历 Map 结构</p>
+<p>6、遍历 Map 结构</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const map = new Map();</span><br><span class="line">map.set(&apos;first&apos;, &apos;hello&apos;);</span><br><span class="line">map.set(&apos;second&apos;, &apos;world&apos;);</span><br><span class="line"></span><br><span class="line">for (let [key, value] of map) &#123;</span><br><span class="line">  console.log(key + &quot; is &quot; + value);</span><br><span class="line">&#125;</span><br><span class="line">// first is hello</span><br><span class="line">// second is world</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 获取键名</span><br><span class="line">for (let [key] of map) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 获取键值</span><br><span class="line">for (let [,value] of map) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>7 输入模块的指定方法</p>
+<p>7、输入模块的指定方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; SourceMapConsumer, SourceNode &#125; = require(&quot;source-map&quot;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="函数扩展"><a href="#函数扩展" class="headerlink" title="函数扩展"></a>函数扩展</h1><p>1、ES6 允许为函数的参数设置默认值，即直接写在参数定义的后面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function log(x, y = &apos;World&apos;) &#123;</span><br><span class="line">  console.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">log(&apos;Hello&apos;) // Hello World</span><br><span class="line">log(&apos;Hello&apos;, &apos;China&apos;) // Hello China</span><br><span class="line">log(&apos;Hello&apos;, &apos;&apos;) // Hello</span><br></pre></td></tr></table></figure>
+<p>2、参数默认值可以与解构赋值的默认值，结合起来使用。</p>
 
       
     </div>
@@ -374,8 +380,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/hpblog/2018/05/15/sass语法总结/" rel="prev" title="sass语法总结">
-                sass语法总结 <i class="fa fa-chevron-right"></i>
+              <a href="/hpblog/2017/06/15/Sass语法总结/" rel="prev" title="Sass语法总结">
+                Sass语法总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -457,7 +463,7 @@
               
                 <a href="/hpblog/archives">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -494,7 +500,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用重点语法总结"><span class="nav-number">1.</span> <span class="nav-text">常用重点语法总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么使用let和const"><span class="nav-number">1.1.</span> <span class="nav-text">为什么使用let和const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解构用途"><span class="nav-number">1.2.</span> <span class="nav-text">解构用途</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么使用let和const"><span class="nav-number">1.</span> <span class="nav-text">为什么使用let和const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解构用途"><span class="nav-number">2.</span> <span class="nav-text">解构用途</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数扩展"><span class="nav-number">3.</span> <span class="nav-text">函数扩展</span></a></li></ol></div>
             
 
           </div>
